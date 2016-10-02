@@ -1,3 +1,5 @@
+require 'json'
+
 describe Incident do
 
   URL = 'http://nuforc.org/webreports/130/S130329.html'
@@ -8,6 +10,7 @@ describe Incident do
   DURATION = '10 Minutes'
   SUMMARY = '3 orbs dancing/chasing each other in circles in Sanborn, NY. ((anonymous report))'
   POSTED_DATE = '9/30/16'
+  DESCRIPTION = '3 orbs dancing/chasing each other in circles in Sanborn, NY. ((anonymous report))...'
 
   it 'should have a url' do
     incident = Incident.new(URL)
@@ -55,6 +58,30 @@ describe Incident do
     incident = Incident.new(URL, DATETIME, CITY, STATE, SHAPE, DURATION, SUMMARY, POSTED_DATE)
 
     expect(incident.posted_date).to eq(POSTED_DATE)
+  end
+
+  it 'can have a description' do
+    incident = Incident.new(URL, DATETIME, CITY, STATE, SHAPE, DURATION, SUMMARY, POSTED_DATE, DESCRIPTION)
+
+    expect(incident.description).to eq(DESCRIPTION)
+  end
+
+  it 'can create a JSON object' do
+    incident = Incident.new(URL, DATETIME, CITY, STATE, SHAPE, DURATION, SUMMARY, POSTED_DATE, DESCRIPTION)
+
+    expected_json_hash = {:url => incident.url, :date_time => incident.date_time, :city => incident.city, :state => incident.state, :shape => incident.shape, :duration => incident.duration, :summary => incident.summary, :posted_date => incident.posted_date, :description => incident.description}
+
+    actual_json_hash = JSON.parse(incident.to_json)
+
+    expect(actual_json_hash['url']).to eq(expected_json_hash[:url])
+    expect(actual_json_hash['date_time']).to eq(expected_json_hash[:date_time])
+    expect(actual_json_hash['city']).to eq(expected_json_hash[:city])
+    expect(actual_json_hash['state']).to eq(expected_json_hash[:state])
+    expect(actual_json_hash['shape']).to eq(expected_json_hash[:shape])
+    expect(actual_json_hash['duration']).to eq(expected_json_hash[:duration])
+    expect(actual_json_hash['summary']).to eq(expected_json_hash[:summary])
+    expect(actual_json_hash['posted_date']).to eq(expected_json_hash[:posted_date])
+    expect(actual_json_hash['description']).to eq(expected_json_hash[:description])
   end
   
   describe 'When parsing the incident' do

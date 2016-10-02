@@ -1,5 +1,6 @@
 require_relative 'index_reports_by_month'
 require 'sanitize'
+require 'json'
 
 class Incident < IndexReportsByMonth
 
@@ -21,5 +22,9 @@ class Incident < IndexReportsByMonth
     doc = Nokogiri::HTML(open(@url))
 
     @description = Sanitize.fragment(doc.xpath('//table/tbody/tr[2]/td/font').text)
+  end
+
+  def to_json
+    JSON.generate({:url => @url, :date_time => @date_time, :city => @city, :state => @state, :shape => @shape, :duration => @duration, :summary => @summary, :posted_date => @posted_date, :description => @description})
   end
 end
