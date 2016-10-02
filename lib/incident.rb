@@ -2,9 +2,9 @@ require_relative 'index_reports_by_month'
 
 class Incident < IndexReportsByMonth
 
-  attr_reader :url, :date_time, :city, :state, :shape, :duration, :summary, :posted_date
+  attr_reader :url, :date_time, :city, :state, :shape, :duration, :summary, :posted_date, :description
 
-  def initialize(url, date_time=nil, city=nil, state=nil, shape=nil, duration=nil, summary=nil, posted_date=nil)
+  def initialize(url, date_time=nil, city=nil, state=nil, shape=nil, duration=nil, summary=nil, posted_date=nil, description=nil)
     super(url)
     @date_time = date_time
     @city = city
@@ -13,5 +13,12 @@ class Incident < IndexReportsByMonth
     @duration = duration
     @summary = summary
     @posted_date = posted_date
+    @description = description
+  end
+
+  def parse
+    doc = Nokogiri::HTML(open(@url))
+
+    @description = doc.xpath('//table/tbody/tr[2]/td/font').text
   end
 end
