@@ -77,5 +77,9 @@ describe Incident do
     it 'captures the incident description' do
       expect(@incident_report.description).to include('I was driving down a busy straight road when all of a sudden')
     end
+
+    it 'strips html tags from the incident description' do
+      expect(@incident_report.description).not_to include('<br>')
+    end
   end
 end

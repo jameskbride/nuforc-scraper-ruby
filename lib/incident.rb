@@ -1,4 +1,5 @@
 require_relative 'index_reports_by_month'
+require 'sanitize'
 
 class Incident < IndexReportsByMonth
 
@@ -19,6 +20,6 @@ class Incident < IndexReportsByMonth
   def parse
     doc = Nokogiri::HTML(open(@url))
 
-    @description = doc.xpath('//table/tbody/tr[2]/td/font').text
+    @description = Sanitize.fragment(doc.xpath('//table/tbody/tr[2]/td/font').text)
   end
 end
