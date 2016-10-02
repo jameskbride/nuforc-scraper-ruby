@@ -1,0 +1,1 @@
+require 'index_reports_by_month'
