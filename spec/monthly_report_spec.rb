@@ -16,6 +16,12 @@ describe MonthlyReport do
   end
 
   it 'should return a list of monthly reports' do
-    expect(@incidents.length).to eq(529)
+    expect(@incidents.length).to eq(528)
+  end
+
+  it 'should capture the date/time for each incident' do
+    incident = @incidents[0]
+
+    expect(incident.date_time).to eq('9/29/16 23:30')
   end
 end
