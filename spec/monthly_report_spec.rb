@@ -49,6 +49,12 @@ describe MonthlyReport do
 
       expect(incident.shape).to eq('Oval')
     end
+
+    it 'should capture the duration' do
+      incident = @incidents[0]
+
+      expect(incident.duration).to eq('10 minutes')
+    end
   end
 
 end
