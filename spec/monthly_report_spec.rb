@@ -61,6 +61,12 @@ describe MonthlyReport do
 
       expect(incident.summary).to eq('3 orbs dancing/chasing each other in circles in Sanborn, NY.  ((anonymous report))')
     end
+
+    it 'should capture the posted date' do
+      incident = @incidents[0]
+
+      expect(incident.posted_date).to eq('9/30/16')
+    end
   end
 
 end

@@ -7,6 +7,7 @@ describe Incident do
   SHAPE = 'Oval'
   DURATION = '10 Minutes'
   SUMMARY = '3 orbs dancing/chasing each other in circles in Sanborn, NY. ((anonymous report))'
+  POSTED_DATE = '9/30/16'
 
   it 'should have a url' do
     incident = Incident.new(URL)
@@ -48,5 +49,11 @@ describe Incident do
     incident = Incident.new(URL, DATETIME, CITY, STATE, SHAPE, DURATION, SUMMARY)
 
     expect(incident.summary).to eq(SUMMARY)
+  end
+
+  it 'can have a posted date' do
+    incident = Incident.new(URL, DATETIME, CITY, STATE, SHAPE, DURATION, SUMMARY, POSTED_DATE)
+
+    expect(incident.posted_date).to eq(POSTED_DATE)
   end
 end
