@@ -19,6 +19,7 @@ class Incident < IndexReportsByMonth
   end
 
   def parse
+    puts "Parsing url: #{@url}"
     doc = Nokogiri::HTML(open(@url))
 
     @description = Sanitize.fragment(doc.xpath('//table/tbody/tr[2]/td/font').text)
