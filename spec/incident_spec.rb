@@ -6,6 +6,7 @@ describe Incident do
   STATE = 'NY'
   SHAPE = 'Oval'
   DURATION = '10 Minutes'
+  SUMMARY = '3 orbs dancing/chasing each other in circles in Sanborn, NY. ((anonymous report))'
 
   it 'should have a url' do
     incident = Incident.new(URL)
@@ -41,5 +42,11 @@ describe Incident do
     incident = Incident.new(URL, DATETIME, CITY, STATE, SHAPE, DURATION)
 
     expect(incident.duration).to eq(DURATION)
+  end
+
+  it 'can have a summary' do
+    incident = Incident.new(URL, DATETIME, CITY, STATE, SHAPE, DURATION, SUMMARY)
+
+    expect(incident.summary).to eq(SUMMARY)
   end
 end

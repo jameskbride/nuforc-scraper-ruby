@@ -55,6 +55,12 @@ describe MonthlyReport do
 
       expect(incident.duration).to eq('10 minutes')
     end
+
+    it 'should capture the summary' do
+      incident = @incidents[0]
+
+      expect(incident.summary).to eq('3 orbs dancing/chasing each other in circles in Sanborn, NY.  ((anonymous report))')
+    end
   end
 
 end
