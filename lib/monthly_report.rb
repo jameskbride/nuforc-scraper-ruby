@@ -22,7 +22,7 @@ class MonthlyReport < IndexReportsByMonth
   end
 
   def create_incident(doc, index)
-    url = BASE_URL + doc.xpath("//table/tbody/tr[#{index}]/td/font/a").text
+    url = BASE_URL + doc.xpath("//table/tbody/tr[#{index}]/td/font/a/@href").text
     date_time = doc.xpath("//table/tbody/tr[#{index}]/td[1]/font/a").text
     city = doc.xpath("//table/tbody/tr[#{index}]/td[2]/font").text
     state = doc.xpath("//table/tbody/tr[#{index}]/td[3]/font").text

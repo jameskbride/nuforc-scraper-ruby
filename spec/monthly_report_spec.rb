@@ -20,13 +20,19 @@ describe MonthlyReport do
   end
 
   describe 'for each incident' do
-    it 'should capture the date/time for each incident' do
+    it 'should capture the url' do
+      incident = @incidents[0]
+
+      expect(incident.url).to eq('http://nuforc.org/webreports/130/S130329.html')
+    end
+
+    it 'should capture the date/time' do
       incident = @incidents[0]
 
       expect(incident.date_time).to eq('9/29/16 23:30')
     end
 
-    it 'should capture the city for each incident' do
+    it 'should capture the city' do
       incident = @incidents[0]
 
       expect(incident.city).to eq('Sanborn')
