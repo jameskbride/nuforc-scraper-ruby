@@ -43,6 +43,12 @@ describe MonthlyReport do
 
       expect(incident.state).to eq('NY')
     end
+
+    it 'should capture the shape' do
+      incident = @incidents[0]
+
+      expect(incident.shape).to eq('Oval')
+    end
   end
 
 end

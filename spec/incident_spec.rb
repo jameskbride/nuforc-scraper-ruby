@@ -25,4 +25,10 @@ describe Incident do
 
     expect(incident.state).to eq('NY')
   end
+
+  it 'can have a shape' do
+    incident = Incident.new(ARBITRARY_INCIDENT_URL, '9/29/16 23:30', 'Sanburg', 'NY', 'Oval')
+
+    expect(incident.shape).to eq('Oval')
+  end
 end

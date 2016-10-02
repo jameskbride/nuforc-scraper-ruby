@@ -26,7 +26,8 @@ class MonthlyReport < IndexReportsByMonth
     date_time = doc.xpath("//table/tbody/tr[#{index}]/td[1]/font/a").text
     city = doc.xpath("//table/tbody/tr[#{index}]/td[2]/font").text
     state = doc.xpath("//table/tbody/tr[#{index}]/td[3]/font").text
-    Incident.new(url, date_time, city, state)
+    shape = doc.xpath("//table/tbody/tr[#{index}]/td[4]/font").text
+    Incident.new(url, date_time, city, state, shape)
   end
 
 end
