@@ -19,15 +19,24 @@ describe MonthlyReport do
     expect(@incidents.length).to eq(528)
   end
 
-  it 'should capture the date/time for each incident' do
-    incident = @incidents[0]
+  describe 'for each incident' do
+    it 'should capture the date/time for each incident' do
+      incident = @incidents[0]
 
-    expect(incident.date_time).to eq('9/29/16 23:30')
+      expect(incident.date_time).to eq('9/29/16 23:30')
+    end
+
+    it 'should capture the city for each incident' do
+      incident = @incidents[0]
+
+      expect(incident.city).to eq('Sanborn')
+    end
+
+    it 'should capture the state' do
+      incident = @incidents[0]
+
+      expect(incident.state).to eq('NY')
+    end
   end
 
-  it 'should capture the city for each incident' do
-    incident = @incidents[0]
-
-    expect(incident.city).to eq('Sanborn')
-  end
 end
