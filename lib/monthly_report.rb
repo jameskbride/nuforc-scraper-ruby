@@ -15,8 +15,9 @@ class MonthlyReport < IndexReportsByMonth
     incidents = []
     while (index < incident_links_count) do
       url = BASE_URL + doc.xpath("//table/tbody/tr[#{index}]/td/font/a").text
-      date_time = doc.xpath("//table/tbody/tr[#{index}]/td/font/a").text
-      incidents << (Incident.new(url, date_time))
+      date_time = doc.xpath("//table/tbody/tr[#{index}]/td[1]/font/a").text
+      city = doc.xpath("//table/tbody/tr[#{index}]/td[2]/font").text
+      incidents << (Incident.new(url, date_time, city))
       index += 1
     end
 

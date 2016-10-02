@@ -24,4 +24,10 @@ describe MonthlyReport do
 
     expect(incident.date_time).to eq('9/29/16 23:30')
   end
+
+  it 'should capture the city for each incident' do
+    incident = @incidents[0]
+
+    expect(incident.city).to eq('Sanborn')
+  end
 end

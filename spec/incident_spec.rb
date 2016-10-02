@@ -3,7 +3,7 @@ describe Incident do
   ARBITRARY_INCIDENT_URL = 'http://nuforc.org/webreports/130/S130329.html'
 
   it 'should have a url' do
-    incident = Incident.new(ARBITRARY_INCIDENT_URL, '9/29/16 23:30')
+    incident = Incident.new(ARBITRARY_INCIDENT_URL)
 
     expect(incident.url).to eq(ARBITRARY_INCIDENT_URL)
   end
@@ -12,5 +12,11 @@ describe Incident do
     incident = Incident.new(ARBITRARY_INCIDENT_URL, '9/29/16 23:30')
 
     expect(incident.date_time).to eq('9/29/16 23:30')
+  end
+
+  it 'should have a city' do
+    incident = Incident.new(ARBITRARY_INCIDENT_URL, '9/29/16 23:30', 'Sanburg')
+
+    expect(incident.city).to eq('Sanburg')
   end
 end
