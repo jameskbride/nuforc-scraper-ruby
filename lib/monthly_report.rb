@@ -1,10 +1,16 @@
-require_relative 'index_reports_by_month'
+require_relative 'incident'
 
-class MonthlyReport < IndexReportsByMonth
+class MonthlyReport
 
+  MONTHLY_REPORT_LINK_XPATH = '//table/tbody/tr/td/font/a/@href'
+  BASE_URL = 'http://nuforc.org/webreports/'
   DATE_TIME_XPATH = '//table/tbody/tr/td/font/a/innerHTML()'
 
   attr_reader :url
+
+  def initialize(url)
+    @url = url
+  end
 
   def parse
     puts "Parsing url: #{@url}"

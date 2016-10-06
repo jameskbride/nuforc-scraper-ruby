@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require_relative 'monthly_report'
 
 class IndexReportsByMonth
 

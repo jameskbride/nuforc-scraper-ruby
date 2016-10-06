@@ -1,13 +1,15 @@
-require_relative 'index_reports_by_month'
 require 'sanitize'
 require 'json'
 
-class Incident < IndexReportsByMonth
+class Incident
+
+  MONTHLY_REPORT_LINK_XPATH = '//table/tbody/tr/td/font/a/@href'
+  BASE_URL = 'http://nuforc.org/webreports/'
 
   attr_reader :url, :date_time, :city, :state, :shape, :duration, :summary, :posted_date, :description
 
   def initialize(url, date_time=nil, city=nil, state=nil, shape=nil, duration=nil, summary=nil, posted_date=nil, description=nil)
-    super(url)
+    @url = url
     @date_time = date_time
     @city = city
     @state = state
