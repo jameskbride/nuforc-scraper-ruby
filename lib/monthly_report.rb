@@ -20,8 +20,13 @@ class MonthlyReport
     index = 1
     incidents = []
     while (index < incident_links_count) do
-      incidents << create_incident(doc, index)
-      index += 1
+      begin
+        incidents << create_incident(doc, index)
+        index += 1
+      rescue
+        puts "Couldn't parse incident for monthly report"
+      end
+
     end
 
     incidents
