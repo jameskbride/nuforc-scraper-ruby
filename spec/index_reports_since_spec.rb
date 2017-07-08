@@ -26,8 +26,8 @@ describe IndexReportsSince do
 
   describe 'given a non-matching date' do
     it 'returns a list of reports since that date' do
-      inexact_date = '06/21/2017'
-      index_reports = IndexReportsSince.new(ARBITRARY_URL, inexact_date)
+      non_matching_date = '06/21/2017'
+      index_reports = IndexReportsSince.new(ARBITRARY_URL, non_matching_date)
       expect(index_reports).to receive(:open).with(ARBITRARY_URL).and_return(@index_reports_html)
       @monthly_reports = index_reports.parse
 
