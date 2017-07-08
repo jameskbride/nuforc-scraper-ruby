@@ -16,7 +16,7 @@ class IndexReportsSince
     puts "Parsing url: #{@url}"
     doc = Nokogiri::HTML(open(@url))
     monthly_report_links = doc.xpath(MONTHLY_REPORT_LINK_XPATH).select do |link|
-      @since_date == Chronic.parse(link.text)
+       Chronic.parse(link.text) >= @since_date
     end
     monthly_reports = monthly_report_links.map do |link|
       MonthlyReport.new("#{BASE_URL}#{link.attribute('href')}")
