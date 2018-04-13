@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem "rake", "~> 11.2.2"
-gem "nokogiri", "~> 1.6.8"
+gem "nokogiri", "~> 1.8.2"
 gem "httparty", "~> 0.14.0"
 gem "sanitize", "~> 4.4.0"
 gem 'chronic', '~> 0.10.2'
