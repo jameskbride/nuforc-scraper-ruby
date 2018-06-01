@@ -14,7 +14,9 @@ Usage
 ======
 
 `ruby lib/nuforc_scraper scrape <DIR>`
-This will scrape all incidents for (every month)[http://www.nuforc.org/webreports/ndxevent.html] in the database.
+
+This will scrape all incidents for [every month](http://www.nuforc.org/webreports/ndxevent.html) in the database.
 
 `ruby lib/nuforc_scraper scrape <DIR> --since mm/dd/YYYY`
-This will scrape all incidents since a given (posted date)[http://www.nuforc.org/webreports/ndxpost.html].  Useful if you have already scraped the database and you just need the delta of the newly added incidents.  
+
+This will scrape all incidents since a given [posted date](http://www.nuforc.org/webreports/ndxpost.html).  Useful if you have already scraped the database and you just need the delta of the newly added incidents.  
